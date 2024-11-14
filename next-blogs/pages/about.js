@@ -1,11 +1,19 @@
 // File: pages/about.js
-import NavBar from '../components/NavBar';
+import Head from 'next/head';
+
 function AboutPage() {
   console.log('[AboutPage] render');
   return (
-    <main>
-      <h1>About</h1>
-    </main>
+    <>
+      <Head>
+        <title>About - My Blog</title>
+        <meta name="description" content="Learn more about us on our About page." />
+      </Head>
+      <main>
+        <h1>About</h1>
+      </main>
+    </>
   );
 }
+
 export default AboutPage;
