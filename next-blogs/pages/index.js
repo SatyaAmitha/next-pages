@@ -1,20 +1,12 @@
 // File: pages/index.js
 import Link from 'next/link';
-
+import NavBar from '../components/NavBar';
 function HomePage() {
   console.log('[HomePage] render');
   return (
     <>
       <header>
-        <nav>
-          <ul>
-            <li>
-              <Link href="/about">
-                About
-              </Link>
-            </li>
-          </ul>
-        </nav>
+        <NavBar />
       </header>
       <main>
         <h1>My Blog</h1>
