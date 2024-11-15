@@ -1,6 +1,7 @@
 // File: pages/posts/first-post.js
 import Head from 'next/head';
 export async function getStaticProps() {
+  console.log('[FirstPostPage] getStaticProps()');
   return {
     props: {
       post: {
