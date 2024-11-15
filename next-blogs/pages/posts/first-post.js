@@ -3,7 +3,6 @@ import Head from 'next/head';
 import { getPost } from '../../lib/posts';
 
 export async function getStaticProps() {
-  console.log('[FirstPostPage] getStaticProps()');
   const post = await getPost('first-post');
   return {
     props: { post },
@@ -11,15 +10,14 @@ export async function getStaticProps() {
 }
 
 function FirstPostPage({ post }) {
-  console.log('[FirstPostPage] render:', post);
   return (
     <>
       <Head>
-        <title>{`${post.title} - My Blog`}</title>
+        <title>{`${post.title || 'Untitled'} - My Blog`}</title>
       </Head>
       <main>
-        <h1>{post.title}</h1>
-        <p>{post.body}</p>
+        <h1>{post.title || 'Untitled'}</h1>
+        <article dangerouslySetInnerHTML={{ __html: post.body }} />
       </main>
     </>
   );
