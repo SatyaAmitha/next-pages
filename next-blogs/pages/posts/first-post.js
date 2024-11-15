@@ -13,10 +13,11 @@ function FirstPostPage({ post }) {
   return (
     <>
       <Head>
-        <title>{`${post.title || 'Untitled'} - My Blog`}</title>
+        <title>{`${post.title} - My Blog`}</title>
       </Head>
       <main>
-        <h1>{post.title || 'Untitled'}</h1>
+        <p>{post.date}</p>
+        <h1>{post.title}</h1>
         <article dangerouslySetInnerHTML={{ __html: post.body }} />
       </main>
     </>
