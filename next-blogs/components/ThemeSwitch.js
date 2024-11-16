@@ -1,17 +1,15 @@
 // components/ThemeSwitch.js
 
 import { useState } from 'react';
+import DarkTheme from './DarkTheme';
 
 function ThemeSwitch() {
   const [darkMode, setDarkMode] = useState(false);
 
-  console.log('[ThemeSwitch] darkMode:', darkMode);
-  const text = darkMode ? 'Light Mode' : 'Dark Mode';
-
   return (
     <>
       <button onClick={() => setDarkMode(!darkMode)}>
-        {text}
+        {darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
       </button>
       <style jsx>{`
         button {
@@ -21,6 +19,7 @@ function ThemeSwitch() {
           cursor: pointer;
         }
       `}</style>
+      {darkMode && <DarkTheme />}
     </>
   );
 }
