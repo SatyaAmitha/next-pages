@@ -3,15 +3,16 @@
 import { useState, useEffect } from 'react';
 import DarkTheme from './DarkTheme';
 
-function ThemeSwitch() {
-  const [darkMode, setDarkMode] = useState(false);
+function loadDarkMode() {
+  if (typeof localStorage === 'undefined') {
+    return false;
+  }
+  const value = localStorage.getItem('darkMode');
+  return (value === null) ? false : JSON.parse(value);
+}
 
-  useEffect(() => {
-    const value = localStorage.getItem('darkMode');
-    if (value !== null) {
-      setDarkMode(JSON.parse(value));
-    }
-  }, []);
+function ThemeSwitch() {
+  const [darkMode, setDarkMode] = useState(loadDarkMode);
 
   const handleClick = () => {
     localStorage.setItem('darkMode', JSON.stringify(!darkMode));
@@ -22,7 +23,7 @@ function ThemeSwitch() {
 
   return (
     <>
-      <button onClick={handleClick}>
+      <button onClick={handleClick} suppressHydrationWarning>
         {text}
       </button>
       <style jsx>{`
